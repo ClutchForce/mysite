@@ -33,6 +33,14 @@ byiringiro4u@gmail.com
 Mosts all statics to one place
 python manage.py collectstatic 
 
+-----Third party imports-------
+
+pip install django-crispy-forms
+pip install crispy-bootstrap5
+python -m pip install django-extensions
+pip install wagtailmenus
+pip install wagtail-metadata     
+pip install django-contrib-comments
 
 
 old post body html
@@ -151,13 +159,4 @@ old post body html
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
     </p>
 </div>
-
------Third party imports-------
-
-pip install django-crispy-forms
-pip install crispy-bootstrap5
-python -m pip install django-extensions
-pip install wagtailmenus
-pip install wagtail-metadata     
-pip install django-contrib-comments
 
