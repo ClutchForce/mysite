@@ -1,0 +1,211 @@
+{% extends "base.html"%} 
+{% load wagtailcore_tags wagtailimages_tags%}
+{% load static%}
+{% load blogapp_tags %}
+
+{% block content %}
+{% if page.filter_type %}
+
+{% comment %} Include removal of the for <br> elements here {% endcomment %}
+{% comment %} {% block breaks %}
+{% endblock breaks %} {% endcomment %}
+
+<section class="categorie-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="categorie-title">
+                    <h3>{{page.filter_type}} : <span> {{page.filter_term}}</span> </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+<br>
+<br>
+<br>
+<br>
+{% endif %}
+
+<!--blog-grid-->
+<section class="blog-grid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 mt-30">
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-lg-6 col-md-6">
+                        <!--Post-1 page.get_children.specific-->
+                            <div class="post-card">
+                                <div class="post-card-image">
+                                    {% if post.header_image %}
+                                    <a href="{% post_page_date_slug_url post blogpage %}">
+                                        {% image post.header_image original as header_image %}
+                                        <img src="{{header_image.url}}" alt="">
+                                    </a>
+                                    {% endif %}
+                                </div>
+                                <div class="post-card-content">
+                                    {% comment %} <a href="blog-grid.html" class="categorie">Food</a> {% endcomment %}
+                                    {% comment %} creates category list for the specific posts categories {% endcomment %}
+                                    {% for category in post.categories.all %}
+                                        <a href="#" class="categorie">{{ category.blog_category.name }}</a>
+                                    {% endfor %}
+
+                                    <h5>
+                                        <a href="{% post_page_date_slug_url post blogpage %}">{{post.title}} </a>
+                                    </h5>
+                                    {% comment %} description here {% endcomment %}
+                                    <p>{{post.description}}</p>
+                                    <div class="post-card-info">
+                                        <ul class="list-inline">
+                                            {% comment %} <li>
+                                                <a href="author.html">
+                                                    <img src="{%static 'assets/img/author/1.jpg' %}" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="author.html">David Smith</a>
+                                            </li> {% endcomment %}
+                                            <li class="dot"></li>
+                                            <li>{{post.last_published_at}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <!--/-->
+                    </div>
+                    {% endfor %} 
+                    {% comment %} add another class="col-lg-6 col-md-6 here and fill it with every other post {% endcomment %}
+
+
+
+                    <!--pagination-->
+                    {% include "components/pagination.html"%}
+                </div>
+            </div>
+            <div class="col-lg-4 max-width">
+                {% comment %} "Dont need this widget rn"
+                <!--widget-latest-posts-->
+                <div class="widget ">
+                    <div class="section-title">
+                        <h5>Latest Posts</h5>
+                    </div>
+                    <ul class="widget-latest-posts">
+                        <li class="last-post">
+                            <div class="image">
+                                <a href="post-default.html">
+                                    <img src="assets/img/latest/1.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="nb">1</div>
+                            <div class="content">
+                                <p>
+                                    <a href="post-default.html">5 Things I Wish I Knew Before Traveling to Malaysia</a>
+                                </p>
+                                <small>
+                                    <span class="icon_clock_alt"></span> January 15, 2021</small>
+                            </div>
+                        </li>
+                        <li class="last-post">
+                            <div class="image">
+                                <a href="post-default.html">
+                                    <img src="assets/img/latest/2.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="nb">2</div>
+                            <div class="content">
+                                <p>
+                                    <a href="post-default.html">Everything you need to know about visiting the Amazon.</a>
+                                </p>
+                                <small>
+                                    <span class="icon_clock_alt"></span> January 15, 2021</small>
+                            </div>
+                        </li>
+                        <li class="last-post">
+                            <div class="image">
+                                <a href="post-default.html">
+                                    <img src="assets/img/latest/3.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="nb">3</div>
+                            <div class="content">
+                                <p>
+                                    <a href="post-default.html">How to spend interesting vacation after hard work?</a>
+                                </p>
+                                <small>
+                                    <span class="icon_clock_alt"></span> January 15, 2021</small>
+                            </div>
+                        </li>
+                        <li class="last-post">
+                            <div class="image">
+                                <a href="post-default.html">
+                                    <img src="assets/img/latest/4.jpg" alt="...">
+                                </a>
+                            </div>
+                            <div class="nb">4</div>
+                            <div class="content">
+                                <p>
+                                    <a href="post-default.html">10 Best and Most Beautiful Places to Visit in Italy</a>
+                                </p>
+                                <small>
+                                    <span class="icon_clock_alt"></span> January 15, 2021</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--/--> {% endcomment %}
+
+                {% comment %} "Dont need instagram widget rn"
+                <!--widget-instagram-->
+                <div class="widget">
+                    <div class="section-title">
+                        <h5>Instagram</h5>
+                    </div>
+                    <ul class="widget-instagram">
+                        <li>
+                            <a class="image" href="#">
+                                <img src="assets/img/instagram/1.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="image" href="#">
+                                <img src="assets/img/instagram/2.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="image" href="#">
+                                <img src="assets/img/instagram/3.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="image" href="#">
+                                <img src="assets/img/instagram/4.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="image" href="#">
+                                <img src="assets/img/instagram/5.jpg" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a class="image" href="#">
+                                <img src="assets/img/instagram/6.jpg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                
+                </div> {% endcomment %}
+                
+                <!--widget-categories-->
+                {% category_list %}
+
+                <!--widget-tags-->
+                {% tag_list %}
+                                
+            </div>
+        </div>
+    </div>
+</section><!--/-->
+{% endblock %}

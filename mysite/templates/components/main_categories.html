@@ -1,0 +1,16 @@
+{% load wagtailroutablepage_tags %}
+<div class="widget">
+    <div class="section-title">
+        <h5>Categories</h5>
+    </div>
+    <ul class="widget-categories">
+        <li>
+            {% for category in categories %}
+            <a href="{% routablepageurl blogpage 'post_by_category' category.slug %}" class="categorie">{{ category.name }}</a>
+            
+            {% endfor %}
+
+        </li>
+        
+    </ul>
+</div> 
