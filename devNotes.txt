@@ -42,6 +42,18 @@ pip install wagtailmenus
 pip install wagtail-metadata     
 pip install django-contrib-comments
 
+# app.yaml
+
+runtime: python39
+env: standard
+entrypoint: gunicorn -b :$PORT core.wsgi:application
+
+handlers:
+- url: /.*
+  script: auto
+
+runtime_config:
+  python_version: 3
 
 old post body html
 <div class="post-single-body">

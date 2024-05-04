@@ -24,6 +24,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
+DATABASES = {'default': env.db()}
+
 # SECURITY WARNING: define the correct hosts in production!
 
 APPENGINE_URL = env('APPENGINE_URL', default=None)
