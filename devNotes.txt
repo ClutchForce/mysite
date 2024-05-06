@@ -24,7 +24,7 @@ author.html page
 TODO toadd
 about me page
 email done kinda idk look into it make it do better
-
+Follow the google tutorial on how to deploy i gave up
 
 
 guys email
@@ -43,6 +43,7 @@ pip install wagtail-metadata
 pip install django-contrib-comments
 
 # app.yaml
+
 
 runtime: python39
 env: standard
