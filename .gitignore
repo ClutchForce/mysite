@@ -10,7 +10,7 @@ media/
 
 # Virtual environment:
 env/
-.env
+#.env
 
 # PyCharm
 .idea/
